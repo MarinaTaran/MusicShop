@@ -33,6 +33,8 @@ public List<Instrument> prepareInstruments(Map<String, Integer> order){...}
 
 package com.company;
 
+import com.company.musicalInstrument.NotSuchInstrumentException;
+
 import java.util.*;
 
 public class MusicShop {
@@ -94,8 +96,12 @@ public class MusicShop {
                         }
                     }
                     if (flag) {
-                        //todo vibrasivaem svoe iskluchenie
-                        System.out.println("there isn't such instrument!");
+                        // vibrasivaem svoe iskluchenie
+                        try {
+                            throw new NotSuchInstrumentException("there isn't such instrument!");
+                        } catch (NotSuchInstrumentException n) {
+                            n.printMyMessage();
+                        }
                         continue;
                     }
                     System.out.println("How many do you want?");
